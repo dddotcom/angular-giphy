@@ -43,7 +43,7 @@ app.controller('GiphyCtrl', ['$scope', '$http', '$window', function($scope, $htt
   $scope.giphyNextPage = function(){
     $scope.giphyBusy = true;
     var req = {
-      url: 'http://api.giphy.com/v1/gifs/search?',
+      url: 'https://api.giphy.com/v1/gifs/search?',
       method: 'GET',
       params: {
         q: $scope.searchTerm,
