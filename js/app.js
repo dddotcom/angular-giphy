@@ -14,10 +14,10 @@ app.controller('GiphyCtrl', ['$scope', '$http', '$window', function($scope, $htt
 
   $scope.onSuccess = function(e) {
     $scope.copiedId = this.gif.id;
-    console.log($scope.copiedId);
-    console.info('Action:', e.action);
-    console.info('Text:', e.text);
-    console.info('Trigger:', e.trigger);
+    // console.log($scope.copiedId);
+    // console.info('Action:', e.action);
+    // console.info('Text:', e.text);
+    // console.info('Trigger:', e.trigger);
     e.clearSelection();
 };
 
@@ -54,7 +54,7 @@ app.controller('GiphyCtrl', ['$scope', '$http', '$window', function($scope, $htt
       };
 
       $http(req).then(function success(res){
-        console.log(res);
+        // console.log(res);
         var gifs = res.data.data;
         $scope.gifs = $scope.gifs.concat(gifs);
         $scope.giphyBusy = false;
