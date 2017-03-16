@@ -41,23 +41,25 @@ app.controller('GiphyCtrl', ['$scope', '$http', '$window', function($scope, $htt
   };
 
   $scope.giphyNextPage = function(){
-    $scope.giphyBusy = true;
-    var req = {
-      url: 'https://api.giphy.com/v1/gifs/search?',
-      method: 'GET',
-      params: {
-        q: $scope.searchTerm,
-        offset: $scope.gifs.length,
-        api_key: 'dc6zaTOxFJmzC',
-      }
-    };
+    if($scope.searchTerm){
+      $scope.giphyBusy = true;
+      var req = {
+        url: 'https://api.giphy.com/v1/gifs/search?',
+        method: 'GET',
+        params: {
+          q: $scope.searchTerm,
+          offset: $scope.gifs.length,
+          api_key: 'dc6zaTOxFJmzC',
+        }
+      };
 
-    $http(req).then(function success(res){
-      console.log(res);
-      var gifs = res.data.data;
-      $scope.gifs = $scope.gifs.concat(gifs);
-      $scope.giphyBusy = false;
-    }.bind($scope));
+      $http(req).then(function success(res){
+        console.log(res);
+        var gifs = res.data.data;
+        $scope.gifs = $scope.gifs.concat(gifs);
+        $scope.giphyBusy = false;
+      }.bind($scope));
+    }
   };
 
 }]);
