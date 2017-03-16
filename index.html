@@ -8,31 +8,55 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="https://cdn.rawgit.com/zenorocha/clipboard.js/master/dist/clipboard.min.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular.js"></script>
+    <script src="js/ngclipboard.min.js"></script>
+    <script src="js/ng-infinite-scroll.js"></script>
     <script src="js/app.js"></script>
-
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
   </head>
+
+
+
   <body ng-app="GiphyApp">
-    <div class="container">
+    <div class="container" ng-controller="GiphyCtrl">
       <h1 class="text-center">Welcome to Giphy Search</h1>
+      <p class="text-center">Quickly find and share gifs!</p>
 
-      <form class="form-inline">
-        <div class="form-group">
-          <label for="search">Search</label>
-          <input type="text" placeholder="Search for GIFs" id="search" class="form-control">
+      <button class="btn btn-danger top" ng-click="scrollToTop()">
+        <span class="glyphicon glyphicon-arrow-up">
+        </span>
+      </button>
+
+      <form class="form-inline text-center" ng-submit="search()">
+        <div class="form-group search-bar">
+          <label ng-show="" for="search">Search</label>
+          <input id="search-box" ng-model="searchTerm" type="text" placeholder="Search for GIFs" id="search" class="form-control input-lg">
         </div>
-        <button type="submit" class="btn btn-primary">Search</button>
+        <button type="submit" class="btn btn-primary btn-lg">Search</button>
       </form>
+      <div id="logo">
+        <img src="img/logo.png">
+        <br>
+        <a class="btn" target="_blank" rel="noopener" href="https://github.com/dddotcom/angular-giphy">GitHub</a>
+      </div>
 
-      <div id="results"></div>
+      <div infinite-scroll="giphyNextPage()" infinite-scroll-disabled='giphyBusy' infinite-scroll-distance="3" id="results">
+        <div class="row">
+          <div ng-mouseenter="show=true" ng-mouseleave="show=false" class="col col-xs-12 col-sm-4 col-md-3" ng-repeat="gif in gifs track by $index">
+            <p ng-show="copiedId === gif.id"class="copy-text">Copied!</p>
+            <div ng-show="show" class="copy"><i class="fa fa-clipboard" aria-hidden="true"></i></div>
+            <img class="gif-img" ng-src="{{ gif.images.fixed_height_downsampled.url }}" ngclipboard data-clipboard-text="{{ gif.images.fixed_height.url }}" ngclipboard-success="onSuccess(e);">
+          </div>
+        </div>
+        <div style='clear: both;'></div>
+      </div>
+
+      <div ng-show='giphyBusy'>Loading data...</div>
     </div>
   </body>
 </html>

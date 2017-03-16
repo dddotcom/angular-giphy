@@ -1,0 +1,55 @@
+body {
+  background-color: black;
+  color: white;
+}
+
+.gif-img {
+  width: 300px;
+  height: 200px;
+}
+
+.col {
+  padding: 0;
+  cursor: pointer;
+}
+
+.top {
+  position: fixed;
+  top: 15px;
+  right: 10px;
+}
+
+form {
+  margin-bottom: 15px;
+}
+
+#logo {
+  position: fixed;
+  top: 15px;
+  left: 10px;
+}
+
+.copy {
+  position: absolute;
+  top: 0;
+  border-radius: 0px;
+  background-color: rgba(0,0,0,0.8);
+  padding: 4px;
+}
+
+.copy-text {
+  background-color: rgba(0,0,0,0.8);
+  color: white;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 4px;
+}
+
+.search-bar {
+  width: 50%;
+}
+
+#search-box {
+  width: 100%;
+}
