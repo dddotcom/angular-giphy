@@ -48,7 +48,7 @@
 
       <div infinite-scroll="giphyNextPage()" infinite-scroll-disabled='giphyBusy' infinite-scroll-distance="3" id="results">
         <div class="row">
-          <div ng-mouseenter="show=true" ng-mouseleave="show=false" class="col col-xs-12 col-sm-4 col-md-3" ng-repeat="gif in gifs track by $index">
+          <div ng-mouseenter="show=true" ng-mouseleave="show=false" class="col col-xs-11 col-sm-4 col-md-3" ng-repeat="gif in gifs track by $index">
             <p ng-show="copiedId === gif.id"class="copy-text">Copied!</p>
             <div ng-show="show" class="copy"><i class="fa fa-clipboard" aria-hidden="true"></i></div>
             <img class="gif-img" ng-src="{{ gif.images.fixed_height_downsampled.url }}" ngclipboard data-clipboard-text="{{ gif.images.fixed_height.url }}" ngclipboard-success="onSuccess(e);">
