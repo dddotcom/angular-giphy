@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Giphy Search</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -32,13 +33,18 @@
         </span>
       </button>
 
-      <form class="form-inline text-center" ng-submit="search()">
-        <div class="form-group search-bar">
-          <label ng-show="" for="search">Search</label>
-          <input id="search-box" ng-model="searchTerm" type="text" placeholder="Search for GIFs" id="search" class="form-control input-lg">
+      <div class="row">
+        <div class="col-xs-12">
+          <form class="form-inline text-center" ng-submit="search()">
+            <div class="form-group search-bar">
+              <label ng-show="" for="search">Search</label>
+              <input id="search-box" ng-model="searchTerm" type="text" placeholder="Search for GIFs" id="search" class="form-control input-lg">
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg">Search</button>
+          </form>
         </div>
-        <button type="submit" class="btn btn-primary btn-lg">Search</button>
-      </form>
+      </div>
+
       <div id="logo">
         <img src="img/logo.png">
         <br>
