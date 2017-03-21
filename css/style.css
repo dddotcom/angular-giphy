@@ -46,6 +46,27 @@ form {
   padding: 4px;
 }
 
+.favorite-text {
+  color: white;
+  z-index: 10;
+  position: absolute;
+  top: 42%;
+  left: 41%;
+  padding: 4px;
+}
+
+.heart {
+  position:absolute;
+  top: 25%;
+  left: 35%;
+  color: rgba(255,0,0,0.5);
+  font-size: 2.5em;
+}
+
+.heart:hover {
+  color: red;
+}
+
 #search-box {
   width: 100%;
 }

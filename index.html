@@ -11,6 +11,7 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.18/angular-ui-router.js"></script>
     <script src="https://cdn.rawgit.com/zenorocha/clipboard.js/master/dist/clipboard.min.js"></script>
     <script src="js/ngclipboard.min.js"></script>
     <script src="js/ng-infinite-scroll.js"></script>
@@ -20,7 +21,8 @@
   <body ng-app="GiphyApp">
     <div class="container" ng-controller="GiphyCtrl">
       <h1 class="text-center">Welcome to Giphy Search</h1>
-      <p class="text-center">Quickly find and share gifs!</p>
+      <p class="text-center">Click the gif to copy it to your clipboard.</p>
+      <p class="text-center">Click the <3 to favorite and save for later.</p>
 
       <button class="btn btn-danger top" ng-click="scrollToTop()">
         <span class="glyphicon glyphicon-arrow-up">
@@ -50,7 +52,9 @@
         <div class="row">
           <div ng-mouseenter="show=true" ng-mouseleave="show=false" class="col col-xs-11 col-sm-4 col-md-3" ng-repeat="gif in gifs track by $index">
             <p ng-show="copiedId === gif.id"class="copy-text">Copied!</p>
+            <p ng-show="favorites.includes(gif.images.fixed_height.url)"class="favorite-text">Favorited!</p>
             <div ng-show="show" class="copy"><i class="fa fa-clipboard" aria-hidden="true"></i></div>
+            <div ng-show="show" ng-click="favorite(gif.images.fixed_height.url)" class="heart"><i class="fa fa-heart fa-3x" aria-hidden="true"></i></div>
             <img class="gif-img" ng-src="{{ gif.images.fixed_height_downsampled.url }}" ngclipboard data-clipboard-text="{{ gif.images.fixed_height.url }}" ngclipboard-success="onSuccess(e);">
           </div>
         </div>

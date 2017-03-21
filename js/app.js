@@ -7,6 +7,7 @@ app.controller('GiphyCtrl', ['$scope', '$http', '$window', function($scope, $htt
   $scope.after = '';
   $scope.copiedId = '';
   $scope.show = false;
+  $scope.favorites = [];
 
   $scope.scrollToTop = function(){
     $window.scrollTo(0, 0);
@@ -14,12 +15,13 @@ app.controller('GiphyCtrl', ['$scope', '$http', '$window', function($scope, $htt
 
   $scope.onSuccess = function(e) {
     $scope.copiedId = this.gif.id;
-    // console.log($scope.copiedId);
-    // console.info('Action:', e.action);
-    // console.info('Text:', e.text);
-    // console.info('Trigger:', e.trigger);
     e.clearSelection();
-};
+  };
+
+  $scope.favorite = function(url){
+    $scope.favorites.push(url);
+    console.log($scope.favorites);
+  };
 
   $scope.search = function(){
     $scope.gifs = [];
