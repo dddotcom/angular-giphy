@@ -1,0 +1,43 @@
+<div class="container">
+  <h1 class="text-center">Welcome to Giphy Search</h1>
+  <p class="text-center">Click the gif to copy it to your clipboard. Click the <i class="fa fa-heart red" aria-hidden="true"></i> to favorite and save for later.</p>
+
+  <button class="btn btn-danger top" ng-click="scrollToTop()">
+    <span class="glyphicon glyphicon-arrow-up">
+    </span>
+  </button>
+
+  <form class="form-inline text-center" ng-submit="search()">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="input-group input-group-lg">
+          <input id="search-box" ng-model="searchTerm" type="text" class="form-control" placeholder="Search for GIFs">
+          <span class="input-group-btn">
+            <button class="btn btn-primary" type="submit">Search</button>
+          </span>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <div id="logo">
+    <img src="img/logo.png">
+    <br>
+    <a class="btn" target="_blank" rel="noopener" href="https://github.com/dddotcom/angular-giphy">GitHub</a>
+  </div>
+
+  <div infinite-scroll="giphyNextPage()" infinite-scroll-disabled='giphyBusy' infinite-scroll-distance="3" id="results">
+    <div class="row">
+      <div ng-mouseenter="show=true" ng-mouseleave="show=false" class="col col-xs-11 col-sm-4 col-md-3" ng-repeat="gif in gifs track by $index">
+        <p ng-show="copiedId === gif.id"class="copy-text">Copied!</p>
+        <p ng-show="favorites.includes(gif.images.fixed_height.url)"class="favorite-text">Favorited!</p>
+        <div ng-show="show" class="copy"><i class="fa fa-clipboard" aria-hidden="true"></i></div>
+        <div ng-show="show" ng-click="favorite(gif.images.fixed_height.url)" class="heart"><i class="fa fa-heart fa-3x" aria-hidden="true"></i></div>
+        <img class="gif-img" ng-src="{{ gif.images.fixed_height_downsampled.url }}" ngclipboard data-clipboard-text="{{ gif.images.fixed_height.url }}" ngclipboard-success="onSuccess(e);">
+      </div>
+    </div>
+    <div style='clear: both;'></div>
+  </div>
+
+  <div class="text-center" ng-show='giphyBusy'>Loading data...</div>
+</div>

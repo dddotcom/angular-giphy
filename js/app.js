@@ -1,67 +1,19 @@
-var app = angular.module('GiphyApp', ['infinite-scroll', 'ngclipboard']);
+var app = angular.module('GiphyApp', ['infinite-scroll', 'ngclipboard', 'ui.router', 'GiphyControllers']);
 
-app.controller('GiphyCtrl', ['$scope', '$http', '$window', function($scope, $http, $window){
-  $scope.searchTerm = '';
-  $scope.gifs = [];
-  $scope.giphyBusy = false;
-  $scope.after = '';
-  $scope.copiedId = '';
-  $scope.show = false;
-  $scope.favorites = [];
-
-  $scope.scrollToTop = function(){
-    $window.scrollTo(0, 0);
-  };
-
-  $scope.onSuccess = function(e) {
-    $scope.copiedId = this.gif.id;
-    e.clearSelection();
-  };
-
-  $scope.favorite = function(url){
-    $scope.favorites.push(url);
-    console.log($scope.favorites);
-  };
-
-  $scope.search = function(){
-    $scope.gifs = [];
-    var req = {
-      url: 'https://api.giphy.com/v1/gifs/search?',
-      method: 'GET',
-      params: {
-        q: $scope.searchTerm,
-        api_key: 'dc6zaTOxFJmzC'
-      }
-    };
-
-    $http(req).then(function success(res){
-      // console.log(res);
-      $scope.gifs = res.data.data;
-    }, function error(res){
-      console.log("error", res);
-    });
-  };
-
-  $scope.giphyNextPage = function(){
-    if($scope.searchTerm){
-      $scope.giphyBusy = true;
-      var req = {
-        url: 'https://api.giphy.com/v1/gifs/search?',
-        method: 'GET',
-        params: {
-          q: $scope.searchTerm,
-          offset: $scope.gifs.length,
-          api_key: 'dc6zaTOxFJmzC',
-        }
-      };
-
-      $http(req).then(function success(res){
-        // console.log(res);
-        var gifs = res.data.data;
-        $scope.gifs = $scope.gifs.concat(gifs);
-        $scope.giphyBusy = false;
-      }.bind($scope));
-    }
-  };
-
+app.config(["$stateProvider", "$urlRouterProvider", "$locationProvider", function($stateProvider, $urlRouterProvider, $locationProvider){
+  $urlRouterProvider.otherwise('/404');
+  $stateProvider.state('home', {
+    url:'/',
+    templateUrl: '../views/home.html',
+    controller: 'GiphyCtrl'
+  })
+  .state('favorites', {
+    url:'/favorites',
+    templateUrl: '../views/favorites.html',
+    controller: 'GiphyCtrl'
+  })
+  .state('404', {
+    url:'/404',
+    templateUrl: '../views/404.html'
+  });
 }]);

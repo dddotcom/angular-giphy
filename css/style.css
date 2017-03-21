@@ -64,7 +64,22 @@ form {
 }
 
 .heart:hover {
+  color: rgba(255,0,0,0.9);
+}
+
+.red {
   color: red;
+}
+
+.nav {
+    margin-top: 5px;
+}
+
+.styled-link, .styled-link:hover, .styled-link:active, .styled-link:visited, styled-link:link {
+  color: white;
+  text-decoration: none;
+  font-size: 1.5em;
+  padding: 10px;
 }
 
 #search-box {
