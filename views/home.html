@@ -20,12 +20,6 @@
     </div>
   </form>
 
-  <div id="logo">
-    <img src="img/logo.png">
-    <br>
-    <a class="btn" target="_blank" rel="noopener" href="https://github.com/dddotcom/angular-giphy">GitHub</a>
-  </div>
-
   <div infinite-scroll="giphyNextPage()" infinite-scroll-disabled='giphyBusy' infinite-scroll-distance="3" id="results">
     <div class="row">
       <div ng-mouseenter="show=true" ng-mouseleave="show=false" class="col col-xs-11 col-sm-4 col-md-3" ng-repeat="gif in gifs track by $index">

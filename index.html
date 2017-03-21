@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Giphy Search</title>
+    <!-- <base href="/angular-giphy/"> -->
+    <base href="/">
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
@@ -21,9 +23,14 @@
   </head>
 
   <body ng-app="GiphyApp">
-    <div class="nav text-center">
-      <a class="styled-link" href="/#/">Home</a>
-      <a class="styled-link" href="/#/favorites">Favorites</a>
+    <div id="logo">
+      <img src="img/logo.png">
+      <br>
+      <a class="btn" target="_blank" rel="noopener" href="https://github.com/dddotcom/angular-giphy">GitHub</a>
+    </div>
+    <div class="text-center">
+      <a class="styled-link" href="/">Home</a>
+      <a class="styled-link" href="/favorites">Favorites</a>
     </div>
 
       <div ui-view>
