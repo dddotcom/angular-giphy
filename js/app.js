@@ -4,17 +4,17 @@ app.config(["$stateProvider", "$urlRouterProvider", "$locationProvider", functio
   $urlRouterProvider.otherwise('/404');
   $stateProvider.state('home', {
     url:'/',
-    templateUrl: '../views/home.html',
+    templateUrl: './views/home.html',
     controller: 'GiphyCtrl'
   })
   .state('favorites', {
     url:'/favorites',
-    templateUrl: '../views/favorites.html',
+    templateUrl: './views/favorites.html',
     controller: 'GiphyCtrl'
   })
   .state('404', {
     url:'/404',
-    templateUrl: '../views/404.html'
+    templateUrl: './views/404.html'
   });
 
   $locationProvider.html5Mode(true);
