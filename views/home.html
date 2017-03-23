@@ -1,5 +1,5 @@
 <div class="container">
-  <h1 class="text-center">Welcome to Giphy Search</h1>
+  <h1 class="text-center">Willkommen to Better <span class="rio-blue">G</span><span class="rio-yellow">i</span><span class="rio-green">p</span><span class="rio-purple">h</span><span class="rio-red">y</span> Search</h1>
   <p class="text-center">Click the gif to copy it to your clipboard. Click the <i class="fa fa-heart red" aria-hidden="true"></i> to favorite and save for later.</p>
 
   <button class="btn btn-danger top" ng-click="scrollToTop()">
@@ -24,7 +24,7 @@
     <div class="row">
       <div ng-mouseenter="show=true" ng-mouseleave="show=false" class="col col-xs-11 col-sm-4 col-md-3" ng-repeat="gif in gifs track by $index">
         <p ng-show="copiedId === gif.id"class="copy-text">Copied!</p>
-        <p ng-show="favorites.includes(gif.images.fixed_height.url)"class="favorite-text">Favorited!</p>
+        <p ng-show="favorites.includes(gif.images.fixed_height.url)" class="favorite-text">Favorited!</p>
         <div ng-show="show" class="copy"><i class="fa fa-clipboard" aria-hidden="true"></i></div>
         <div ng-show="show" ng-click="favorite(gif.images.fixed_height.url)" class="heart"><i class="fa fa-heart fa-3x" aria-hidden="true"></i></div>
         <img class="gif-img" ng-src="{{ gif.images.fixed_height_downsampled.url }}" ngclipboard data-clipboard-text="{{ gif.images.fixed_height.url }}" ngclipboard-success="onSuccess(e);">

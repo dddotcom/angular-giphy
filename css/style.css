@@ -126,3 +126,23 @@ h1 {
 .error-msg {
   margin-top: 100px;
 }
+
+.rio-blue {
+  color: rgb(146,194,234);
+}
+
+.rio-yellow {
+  color: rgb(242,220,143);
+}
+
+.rio-purple {
+  color: rgb(201, 197, 234);
+}
+
+.rio-red {
+  color: rgb(204, 43, 50);
+}
+
+.rio-green {
+  color: rgb(121,168, 116);
+}

@@ -16,8 +16,8 @@ angular.module("GiphyControllers", ['GiphyServices'])
   $scope.onSuccess = function(e) {
     if(this.gif){
       $scope.copiedId = this.gif.id;
-    } else if(this.gifUrl){
-      $scope.copiedUrl = this.gifUrl;
+    } else if(this.url){
+      $scope.copiedUrl = this.url;
     }
     e.clearSelection();
   };
@@ -70,4 +70,9 @@ angular.module("GiphyControllers", ['GiphyServices'])
     }
   };
 
-}]);
+}])
+.filter("downsampled", function(){
+  return function(input){
+    return input.replace(".gif", "_d.gif");
+  };
+});
