@@ -26,6 +26,10 @@ angular.module("GiphyControllers", ['GiphyServices'])
     Favorite.add(url);
   };
 
+  $scope.deleteFavorite = function(index){
+    Favorite.delete(index);
+  };
+
   $scope.search = function(){
     $scope.gifs = [];
     var req = {
