@@ -23,11 +23,11 @@ angular.module("GiphyControllers", ['GiphyServices'])
   };
 
   $scope.favorite = function(url){
-    Favorite.add(url);
+    $scope.favorites = Favorite.add(url);
   };
 
   $scope.deleteFavorite = function(index){
-    Favorite.delete(index);
+    $scope.favorites = Favorite.delete(index);
   };
 
   $scope.search = function(){
