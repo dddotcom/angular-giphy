@@ -1,7 +1,7 @@
 var app = angular.module('GiphyApp', ['infinite-scroll', 'ngclipboard', 'ui.router', 'GiphyControllers']);
 
 app.config(["$stateProvider", "$urlRouterProvider", "$locationProvider", function($stateProvider, $urlRouterProvider, $locationProvider){
-  $urlRouterProvider.otherwise('/404');
+  $urlRouterProvider.otherwise('/');
   $stateProvider.state('home', {
     url:'/',
     templateUrl: './views/home.html',
