@@ -46,6 +46,20 @@ form {
   padding: 4px;
 }
 
+.delete-text {
+  position: absolute;
+  padding: 7px;
+  top: 0;
+  left: 22px;
+  color: white;
+  border-radius: 0px;
+  background-color: rgba(0,0,0,0.8);
+}
+
+.delete-text:hover {
+  color: red;
+}
+
 .favorite-text {
   color: white;
   z-index: 10;

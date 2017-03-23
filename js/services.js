@@ -1,12 +1,31 @@
 angular.module('GiphyServices', [])
-.factory('Favorite', [function(){
-  var favorites =[];
+.factory('Favorite', ["$window", function($window){
+  // $window.localStorage["favorites"] = [];
   return {
     add: function(gifUrl){
-      favorites.push(gifUrl);
+      console.log("add to local storage " + gifUrl);
+      var arr = [];
+      if($window.localStorage["favorites"]){
+        arr = JSON.parse($window.localStorage["favorites"]);
+      }
+      arr.push(gifUrl);
+      $window.localStorage["favorites"] = JSON.stringify(arr);
+      return this.get();
     },
     get: function(){
-      return favorites;
+      console.log("get local storage");
+      if($window.localStorage["favorites"]){
+        return JSON.parse($window.localStorage["favorites"]);
+      } else {
+        return [];
+      }
+    },
+    delete: function(index){
+      console.log("delete from local storage at index " + index);
+      var arr = JSON.parse($window.localStorage["favorites"]);
+      arr.splice(index, 1);
+      $window.localStorage["favorites"] = JSON.stringify(arr)
+      return this.get();
     }
   };
 }]);
