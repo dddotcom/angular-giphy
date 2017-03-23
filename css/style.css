@@ -75,11 +75,30 @@ form {
     margin-top: 5px;
 }
 
-.styled-link, .styled-link:hover, .styled-link:active, .styled-link:visited, styled-link:link {
+a:link {
+  color: white;
+  font-size: 1.2em;
+  text-decoration: none;
+  padding: 10px;
+}
+
+a:visited {
   color: white;
   text-decoration: none;
-  font-size: 1.2em;
-  padding: 10px;
+}
+
+a:hover {
+  color: gray;
+  text-decoration: none;
+}
+
+a:active {
+  color: white;
+  text-decoration: none;
+}
+
+.github {
+  margin-top: 5px;
 }
 
 h1 {
@@ -88,4 +107,8 @@ h1 {
 
 #search-box {
   width: 100%;
+}
+
+.error-msg {
+  margin-top: 100px;
 }

@@ -17,5 +17,5 @@ app.config(["$stateProvider", "$urlRouterProvider", "$locationProvider", functio
     templateUrl: './views/404.html'
   });
 
-  $locationProvider.html5Mode(true);
+  // $locationProvider.html5Mode(true);
 }]);
