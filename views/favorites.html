@@ -1,11 +1,11 @@
 <div class="container">
   <h1 class="text-center">Favorites</h1>
   <div class="row">
-    <div ng-mouseenter="show=true" ng-mouseleave="show=false" class="col col-xs-11 col-sm-4 col-md-3" ng-repeat="gifUrl in favorites track by $index">
-      <p ng-show="copiedUrl === gifUrl" class="copy-text">Copied!</p>
-      <div ng-show="show" ng-click="deleteFavorite($index)"><i class="fa fa-trash fa-lg delete-text" aria-hidden="true"></i></div> 
+    <div ng-mouseenter="show=true" ng-mouseleave="show=false" class="col col-xs-11 col-sm-4 col-md-3" ng-repeat="url in favorites track by $index">
+      <div ng-show="show" ng-click="deleteFavorite($index)"><i class="fa fa-trash fa-lg delete-text" aria-hidden="true"></i></div>
       <div ng-show="show" class="copy"><i class="fa fa-clipboard" aria-hidden="true"></i></div>
-      <img class="gif-img" ng-src="{{ gifUrl }}" ngclipboard data-clipboard-text="{{ gifUrl }}" ngclipboard-success="onSuccess(e);">
+      <p ng-show="copiedUrl === url" class="copy-text">Copied!</p>
+      <img class="gif-img" ng-src="{{ url | downsampled }}" ngclipboard data-clipboard-text="{{ url }}" ngclipboard-success="onSuccess(e);">
     </div>
   </div>
 

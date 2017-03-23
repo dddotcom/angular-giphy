@@ -3,11 +3,11 @@ angular.module('GiphyServices', [])
   // $window.localStorage["favorites"] = [];
   return {
     add: function(gifUrl){
-      console.log("add to local storage " + gifUrl);
       var arr = [];
       if($window.localStorage["favorites"]){
         arr = JSON.parse($window.localStorage["favorites"]);
       }
+
       arr.push(gifUrl);
       $window.localStorage["favorites"] = JSON.stringify(arr);
       return this.get();
