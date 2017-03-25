@@ -42,7 +42,6 @@ angular.module("GiphyControllers", ['GiphyServices'])
     };
 
     $http(req).then(function success(res){
-      // console.log(res);
       $scope.gifs = res.data.data;
     }, function error(res){
       console.log("error", res);

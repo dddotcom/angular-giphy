@@ -24,9 +24,9 @@
     <div class="row">
       <div ng-mouseenter="show=true" ng-mouseleave="show=false" class="col col-xs-11 col-sm-4 col-md-3" ng-repeat="gif in gifs track by $index">
         <p ng-show="copiedId === gif.id"class="copy-text">Copied!</p>
-        <p ng-show="favorites.includes(gif.images.fixed_height.url)" class="favorite-text">Favorited!</p>
+        <p ng-show="favorites.toString().includes(gif.id)" class="favorite-text">Favorited!</p>
         <div ng-show="show" class="copy"><i class="fa fa-clipboard" aria-hidden="true"></i></div>
-        <div ng-show="show" ng-click="favorite(gif.images.fixed_height.url)" class="heart"><i class="fa fa-heart fa-lg" aria-hidden="true"></i></div>
+        <div ng-show="show && !favorites.toString().includes(gif.id)" ng-click="favorite(gif.images.fixed_height.url)" class="heart"><i class="fa fa-heart fa-lg" aria-hidden="true"></i></div>
         <img class="gif-img" ng-src="{{ gif.images.fixed_height_downsampled.url }}" ngclipboard data-clipboard-text="{{ gif.images.fixed_height.url }}" ngclipboard-success="onSuccess(e);">
       </div>
     </div>

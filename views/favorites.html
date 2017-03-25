@@ -1,5 +1,12 @@
 <div class="container">
-  <h1 class="text-center">Favorites</h1>
+  <h1 class="text-center">Favorite <span class="rio-blue">G</span><span class="rio-yellow">I</span><span class="rio-green">F</span><span class="rio-purple">s</span></h1>
+  <p class="text-center">Click the gif to copy it to your clipboard.</p>
+
+  <button class="btn btn-danger top" ng-click="scrollToTop()">
+    <span class="glyphicon glyphicon-arrow-up">
+    </span>
+  </button>
+
   <div class="row">
     <div ng-mouseenter="show=true" ng-mouseleave="show=false" class="col col-xs-11 col-sm-4 col-md-3" ng-repeat="url in favorites track by $index">
       <div ng-show="show" ng-click="deleteFavorite($index)"><i class="fa fa-trash fa-lg delete-text" aria-hidden="true"></i></div>
